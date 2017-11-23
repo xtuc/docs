@@ -9,6 +9,7 @@ content: |
 
     # Prerequisite
 
+    - You already have install the CLI, read the documentation for more information [here](/doc/the-bytearena-cli).
     - This article assumes you already know how to develop a program in JavaScript.
     - You need a running Docker daemon, please refer to [Docker's documentation](https://docs.docker.com/) to install it.
 
