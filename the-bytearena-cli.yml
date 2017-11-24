@@ -10,6 +10,8 @@ content: |
     ```sh
     curl -s https://get.bytearena.com/sh | bash -
     ```
+    
+    We assume that you have `curl` installed on your machine.
 
     Alternatively you can install the binary available as a release on GitHub.
 
