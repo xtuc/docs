@@ -18,6 +18,7 @@ The following specification is only for the `clear_beta` protocol version. Make 
 - `Angle`: a `float64` representing a radian.
 - `ItemTag`: the possible values are `agent`, `obstacle` and `projectile`.
 
+<a name="handshake"></a>
 ## Handshake structure
 
 After the handshake some data will be send back to the agent, with the following properties:
@@ -58,6 +59,7 @@ type specs struct {
 }
 ```
 
+<a name="perception"></a>
 ## Perception structure
 
 The root object is called `perception`, it's the object you receive in argument in the `onTick` function.
