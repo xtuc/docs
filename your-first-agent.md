@@ -22,6 +22,7 @@ $ ba generate nodejs
 
 The agent will be located in the current directory.
 
+<a name="comm"></a>
 # Connection to the game server
 
 Here is a boilersplate to etablish the connection to the game server:
@@ -34,6 +35,7 @@ const agent = comm.connect();
 
 At this point you can already launch the trainer with your agent.
 
+<a name="build"></a>
 # Building your agent
 
 In the root directory of your program, run the following command:
@@ -42,6 +44,7 @@ In the root directory of your program, run the following command:
 $ ba build [AGENT_DIRNAME]
 ```
 
+<a name="take-actions"></a>
 # Taking actions
 
 Your agent can take actions by calling the `takeActions` method:
@@ -60,7 +63,8 @@ agent.takeActions(actions);
 
 The supported methods are: `steer` and `shoot`.
 
-# Interpreting the perception
+<a name="perception"></a>
+# Subscribe to the perception
 
 You can listen to the perception events sent by the game server every tick:
 
