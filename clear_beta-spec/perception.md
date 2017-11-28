@@ -38,5 +38,68 @@ type perception struct {
 
       // Radius of the body of the item (if any)
       bodyradius       float64
+
+      messages      []mailboxMessagePerceptionWrapper`
 }
 ```
+
+<a name="messages"></a>
+## Messages
+
+```go
+type mailboxMessagePerceptionWrapper struct {
+    Subject string      `json:"subject"`
+    Body    interface{} `json:"body"`
+}
+```
+
+
+### Score
+| name | type |
+|---|---|
+| Value | int |
+
+
+### Stats
+| name | type |
+|---|---|
+| DistanceTravelled | float64 |
+
+
+### YouAreRespawning
+| name | type |
+|---|---|
+| RespawningIn | int |
+
+
+### YouHaveBeenFragged
+| name | type |
+|---|---|
+| By | string |
+
+
+### YouHaveBeenHit
+| name | type |
+|---|---|
+| Kind | string |
+| ComingFrom | float64 |
+| Damage | float64 |
+
+
+### YouHaveFragged
+| name | type |
+|---|---|
+| Who | string |
+
+
+### YouHaveHit
+| name | type |
+|---|---|
+| Who | string |
+
+
+### YouHaveRespawned
+| name | type |
+|---|---|
+
+

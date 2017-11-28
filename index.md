@@ -32,6 +32,7 @@ Perceive your environment and react accordingly!
 - `clear_beta` version
     - [Handshake](clear_beta-spec/handshake)
     - [Perception](clear_beta-spec/perception)
+      - [Messages](clear_beta-spec/perception#messages)
 
 ## Community documentation
 
