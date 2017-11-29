@@ -1,7 +1,5 @@
 ---
 title:  The container of your agent
-author: Sven Sauleau
-date:   2017-11-16
 include_js:
     - https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-docker.min.js
 ---

@@ -1,7 +1,5 @@
 ---
 title:  The Bytearena CLI
-author: Sven Sauleau
-date:   2017-11-16
 ---
 
 # Installation

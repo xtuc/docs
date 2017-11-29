@@ -1,7 +1,5 @@
 ---
 title:  Understanding the perception
-author: Sven Sauleau
-date:   2017-11-16
 ---
 
 # Perception representation
