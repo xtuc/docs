@@ -1,7 +1,5 @@
 ---
 title:  Byte Arena
-author: Sven Sauleau, Jérôme Schneider
-date:   2017-11-28
 ---
 
 # What is Byte Arena?

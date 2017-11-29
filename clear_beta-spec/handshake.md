@@ -1,7 +1,5 @@
 ---
 title:  Handshake specification
-author: Sven Sauleau
-date:   2017-11-28
 include_js:
   - https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-go.min.js
 ---

@@ -1,7 +1,5 @@
 ---
-title:  Create your first agent
-author: Sven Sauleau, Jérôme Schneider
-date:   2017-11-16
+title: Create your first agent
 include_js:
     - https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-docker.min.js
 ---
