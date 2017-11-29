@@ -8,7 +8,7 @@ include_js:
 
 We will be going through the implementation of a basic agent for Byte Arena.
 
-While your agent can be coded in whatever programming language you like, this section will teach you to implement one in JavaScript.
+While your agent can be coded in whatever programming language you like, this section will show you to implement one in JavaScript.
 
 # Prerequisite
 
@@ -22,7 +22,7 @@ While your agent can be coded in whatever programming language you like, this se
 
 `ba` is the name of the Byte Arena command line interface (CLI).
 
-Use it to generate your first agent code.
+Use it to scaffold the code for your first agent.
 
 ```sh
 $ ba generate nodejs
@@ -73,11 +73,11 @@ Successfully tagged sweet-tarpon:latest
 ===
 ```
 
-In this example, a directory named `sweet-tarpon` has been produced, and it's code built in a docker container with the same name.
+In this example, a directory named `sweet-tarpon` has been generated, and the code it contains built in a docker container under the same name.
 
 # Giving it a ride
 
-The agent you just built is already able to run!
+The agent you just built is already able to fly!
 
 Try it with this command (replace `sweet-tarpon` with the name of your agent):
 
@@ -110,6 +110,8 @@ Game running at http://localhost:8080/arena/1
 A browser should open at http://localhost:8080/arena/1, displaying the Byte Arena visualization, where you'll find your agent.
 
 > TODO:image here
+
+Once the game is running, the game log displays a stream of messages informing about the state of the game (lines prefixed by `[game]`), and showing the output of your agents on their stdout (lines prefixed by `[agent]`).
 
 You can stop the game by pressing `Ctrl+c` on the command line.
 

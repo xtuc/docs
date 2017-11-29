@@ -14,6 +14,11 @@
     * shoot
     * messages
     * handshake
+    * Existing SDKs
+        * javascript
+        * golang
+        * reasonML
+    * implementing an SDK in any language
 
 * The training
     * One or many agents

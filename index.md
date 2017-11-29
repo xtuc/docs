@@ -20,17 +20,21 @@ An agent perceives its digital environment, makes decisions, and takes actions t
 
 Once your agent is coded, you can see in play against other players agents in your browser, evolving in a 3D world.
 
+> TODO: 60FPS GIF of an agent in the viz
+
 ## How is this even a game?
 
 We find it's both stimulating and fun to make things and learn new stuff in the process, while challenging other players doing so; we hope you do too.
 
-# The beta and it's limitations
+# The beta and its limitations
+
+Byte Arena is not finished yet. We're currently on a beta version of things.
 
 Ultimately, you'll be able to push your agents on [bytearena.com](https://bytearena.com) to compete with other players.
 
 During beta, the online platform will not be available; [however, you can still train, debug and run your agents on your own computer using a simple command line tool we provide](the-bytearena-cli).
 
-# Playing
+# Getting started
 
 - [Create your container](agent-container)
 - [The Bytearena CLI](the-bytearena-cli)
@@ -49,7 +53,7 @@ While your agent can be coded in whatever programming language you like, this se
 
 - [Understanding the perception](understanding-the-perception)
 
-- API for the `clear_beta` version
+- API (`clear_beta` version)
     - [Handshake protocol](clear_beta-spec/handshake)
     - [Perception](clear_beta-spec/perception)
       - [Messages](clear_beta-spec/perception#messages)
@@ -57,16 +61,15 @@ While your agent can be coded in whatever programming language you like, this se
 # Sources of documentation
 
 - [Movement physics with vectors](https://www.xtuc.fr/notes/movement-physics-w-vectors.html)
-- [Understanding vectors - The coding train](https://youtu.be/mWJkvxQXIa8)
-- [Vectors - The coding train [VIDEO]](https://youtu.be/mWJkvxQXIa8)
+- [Understanding vectors - The coding train [VIDEO]](https://youtu.be/mWJkvxQXIa8)
 - [Autonomous agents and steering behavious - The coding train [VIDEO]](https://youtu.be/JIz2L4tn5kM)
 
 # Asking for help
 
 If you encounter any problem or have a question, feel free to open an issue on either [ByteArena/cli](https://github.com/ByteArena/cli/issues) (for the CLI) or [ByteArena/community](https://github.com/ByteArena/community/issues) for any other topic.
 
-Alternatively you can drop a line to [hello@bytearena.com](mailto:hello@bytearena.com).
+Alternatively you can drop us a line at [hello@bytearena.com](mailto:hello@bytearena.com).
 
-We are @byte_arena on Twitter.
+We are [@byte_arena](https://twitter.com/byte_arena) on Twitter.
 
-We also have a Slack chat at https://bytearena.slack.com; ask @byte_arena for an invite.
+We also have a Slack chat at https://bytearena.slack.com; ask us [on Twitter](https://twitter.com/byte_arena) for an invite.
