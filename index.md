@@ -56,11 +56,19 @@ While your agent can be coded in whatever programming language you like, this se
     - [Perception](clear_beta-spec/perception)
       - [Messages](clear_beta-spec/perception#messages)
 
-# Sources of documentation
+# Community materials
 
-- [Movement physics with vectors](https://www.xtuc.fr/notes/movement-physics-w-vectors.html)
-- [Understanding vectors - The coding train [VIDEO]](https://youtu.be/mWJkvxQXIa8)
-- [Autonomous agents and steering behavious - The coding train [VIDEO]](https://youtu.be/JIz2L4tn5kM)
+- Articles
+    - [Movement physics with vectors](https://www.xtuc.fr/notes/movement-physics-w-vectors.html)
+
+- SDKs
+    - [johnsudaar/go-bytearena](https://github.com/johnsudaar/go-bytearena)
+
+# Further reading
+
+- Videos
+    - [Understanding vectors - The coding train](https://youtu.be/mWJkvxQXIa8)
+    - [Autonomous agents and steering behavious - The coding train](https://youtu.be/JIz2L4tn5kM)
 
 # Asking for help
 
