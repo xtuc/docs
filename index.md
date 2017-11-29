@@ -18,7 +18,7 @@ An agent perceives its digital environment, makes decisions, and takes actions t
 
 Once your agent is coded, you can see in play against other players agents in your browser, evolving in a 3D world.
 
-<video controls="controls" autoplay mute>
+<video controls="controls" autoplay muted loop>
     <source type="video/mp4" src="https://s3.eu-central-1.amazonaws.com/bytearena-public/hexagon60.mp4"></source>
     <p>Your browser does not support the video element.</p>
 </video>
