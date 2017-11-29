@@ -32,80 +32,17 @@ This command will generate a directory containing the nodejs source code of a ba
 
 Example:
 
-```sh
-$ ba generate nodejs
-sweet-tarpon has been created
-===
-=== 🤖  Welcome! I'm the Byte Arena Builder Bot (the local one)
-===
+<script type="text/javascript" data-rows="40" src="https://asciinema.org/a/N2YzvXPTWoZI4rBvdpu8LkfI2.js" id="asciicast-N2YzvXPTWoZI4rBvdpu8LkfI2" async></script>
 
-=== Building your agent now.
-
-Step 1/8 : FROM node:7
- ---> d9aed20b68a4
-Step 2/8 : ENV NPM_CONFIG_LOGLEVEL warn
- ---> Using cache
- ---> bc3d1790a08b
-Step 3/8 : WORKDIR /usr/app
- ---> Using cache
- ---> 0047f1426d8f
-Step 4/8 : COPY package.json /usr/app/
- ---> Using cache
- ---> 7fbfeb994c31
-Step 5/8 : RUN npm install
- ---> Using cache
- ---> 88d69714e082
-Step 6/8 : COPY . /usr/app
- ---> Using cache
- ---> 257fe08eed43
-Step 7/8 : RUN npm run build
- ---> Using cache
- ---> b946fb1bb52e
-Step 8/8 : CMD [ "npm", "start" ]
- ---> Using cache
- ---> 37ca9dc1e5d7
-Successfully built 37ca9dc1e5d7
-Successfully tagged sweet-tarpon:latest
-
-===
-=== ✅  Your agent has been built. Let'em know who's the best!
-===    Its name is: sweet-tarpon
-===
-```
-
-In this example, a directory named `sweet-tarpon` has been generated, and the code it contains built in a docker container under the same name.
+In this example, a directory named `powerful-jennet` has been generated, and the code it contains built in a docker container under the same name.
 
 # Giving it a ride
 
 The agent you just built is already able to fly!
 
-Try it with this command (replace `sweet-tarpon` with the name of your agent):
+Try it with this command (replace `powerful-jennet` with the name of your agent):
 
-```
-$ ba train -agent sweet-tarpon
-[log] Register agent sweet-tarpon
-[log] Listen
-[log] Server listening on port 51081
-[log] Starting agent containers
-[log] Spawning agent 1f9308d9-f475-40e3-8113-97e74910975a
-
-Game running at http://localhost:8080/arena/1
-
-[agent] [sweet-tarpon:latest]
-[agent] [sweet-tarpon:latest] > @ start /usr/app
-[agent] [sweet-tarpon:latest] > node dist
-[agent] [sweet-tarpon:latest]
-[log] Agents are ready; starting in 1 second
-[game] Tick 0; 15.635 ms mean; 15.635 ms last; 26 goroutines
-[game] Tick 20; 0.300 ms mean; 0.328 ms last; 26 goroutines
-[game] Tick 40; 0.328 ms mean; 0.186 ms last; 26 goroutines
-[game] Tick 60; 0.325 ms mean; 0.434 ms last; 26 goroutines
-[game] Tick 80; 0.930 ms mean; 0.313 ms last; 26 goroutines
-[game] Tick 100; 0.296 ms mean; 0.283 ms last; 26 goroutines
-[game] Tick 120; 0.293 ms mean; 0.378 ms last; 26 goroutines
-[game] Tick 140; 0.304 ms mean; 0.277 ms last; 26 goroutines
-[...]
-```
+<script type="text/javascript" data-rows="40" src="https://asciinema.org/a/JwmtBpH9wP9xNqSegw9UC6dhm.js" id="asciicast-JwmtBpH9wP9xNqSegw9UC6dhm" async></script>
 
 A browser should open at http://localhost:8080/arena/1, displaying the Byte Arena visualization, where you'll find your agent.
 
