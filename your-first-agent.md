@@ -94,7 +94,7 @@ agent.takeActions(actions);
 The supported methods are: `steer` and `shoot`.
 
 <a name="perception"></a>
-# Subscribe to the perception
+# Receiving the environment
 
 You can listen to the perception events sent by the game server every tick:
 

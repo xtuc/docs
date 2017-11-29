@@ -45,7 +45,7 @@ While your agent can be coded in whatever programming language you like, this se
     - [Connect to the game server](your-first-agent#comm)
     - [Build your agent](your-first-agent#build)
     - [Taking actions](your-first-agent#take-actions)
-    - [Perceive your environment](your-first-agent#perception)
+    - [Receiving the environment](your-first-agent#perception)
 
 # Platform specification
 
