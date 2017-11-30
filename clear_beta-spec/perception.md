@@ -8,96 +8,100 @@ include_js:
 
 The root object is called `perception`, it's the object you receive in argument in the `onTick` function.
 
+<a name="agentPerception"></a>
+### `agentPerception`
 
-```go
-type perception struct {
-
-      /*
-          Description of every objects that the agent can see.
-      */
-      vision []struct {
-
-          // Item identification
-          tag      ItemTag
-
-          nearedge Vector2
-          center   Vector2
-          faredge  Vector2
-          velocity Vector2
-      }
-
-      energy           float64
-
-      // Angle to the north
-      azimuth          float64
-
-      // Velocity of the item (if any)
-      velocity         Vector2
-
-      // Radius of the body of the item (if any)
-      bodyradius       float64
-
-      messages      []mailboxMessagePerceptionWrapper`
-}
-```
-
-<a name="messages"></a>
-## Messages
-
-```go
-type mailboxMessagePerceptionWrapper struct {
-    Subject string      `json:"subject"`
-    Body    interface{} `json:"body"`
-}
-```
-
-
-### Score
-| name | type |
+| Property name | Type | Representation in the JSON |
 |---|---|
-| Value | int |
+| score | `int` | `Number` |
+| energy | `float64` | `Number` |
+| velocity | `vector.Vector2` | `Array of x, y` |
+| azimuth | `float64` | `Number` |
+| vision | `array agentPerceptionVisionItem` | `Array of Object` |
+| shootenergy | `float64` | `Number` |
+| shootcooldown | `int` | `Number` |
+| messages | `array mailboxMessagePerceptionWrapper` | `Array of Object` |
 
 
-### Stats
-| name | type |
+<a name="agentPerceptionVisionItem"></a>
+### `agentPerceptionVisionItem`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| DistanceTravelled | float64 |
+| tag | `string` | `String` |
+| nearedge | `vector.Vector2` | `Array of x, y` |
+| center | `vector.Vector2` | `Array of x, y` |
+| faredge | `vector.Vector2` | `Array of x, y` |
+| velocity | `vector.Vector2` | `Array of x, y` |
 
 
-### YouAreRespawning
-| name | type |
+<a name="mailboxMessagePerceptionWrapper"></a>
+### `mailboxMessagePerceptionWrapper`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| RespawningIn | int |
+| subject | `string` | `String` |
+| body | `unknown` | `Object` |
 
 
-### YouHaveBeenFragged
-| name | type |
+<a name="Score"></a>
+### `Score`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| By | string |
+| value | `int` | `Number` |
 
 
-### YouHaveBeenHit
-| name | type |
+<a name="Stats"></a>
+### `Stats`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| Kind | string |
-| ComingFrom | float64 |
-| Damage | float64 |
+| distanceTravelled | `float64` | `Number` |
 
 
-### YouHaveFragged
-| name | type |
+<a name="YouAreRespawning"></a>
+### `YouAreRespawning`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| Who | string |
+| respawningin | `int` | `Number` |
 
 
-### YouHaveHit
-| name | type |
+<a name="YouHaveBeenFragged"></a>
+### `YouHaveBeenFragged`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
-| Who | string |
+| by | `string` | `String` |
 
 
-### YouHaveRespawned
-| name | type |
+<a name="YouHaveBeenHit"></a>
+### `YouHaveBeenHit`
+
+| Property name | Type | Representation in the JSON |
 |---|---|
+| kind | `string` | `String` |
+| comingfrom | `float64` | `Number` |
+| damage | `float64` | `Number` |
 
+
+<a name="YouHaveFragged"></a>
+### `YouHaveFragged`
+
+| Property name | Type | Representation in the JSON |
+|---|---|
+| who | `string` | `String` |
+
+
+<a name="YouHaveHit"></a>
+### `YouHaveHit`
+
+| Property name | Type | Representation in the JSON |
+|---|---|
+| Who | `string` | `String` |
+
+
+<a name="YouHaveRespawned"></a>
+### `YouHaveRespawned`
 
