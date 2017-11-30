@@ -37,18 +37,9 @@ During beta, the online platform will not be available; [however, you can still 
 
 # Getting started
 
-- [Create your container](agent-container)
-- [The Bytearena CLI](the-bytearena-cli)
+While your agent can be coded in whatever programming language you like, this guide will teach you to implement one in JavaScript.
 
-## Using JavaScript
-
-While your agent can be coded in whatever programming language you like, this section will teach you to implement one in JavaScript.
-
-- [Create your first agent](your-first-agent)
-    - [Connect to the game server](your-first-agent#comm)
-    - [Build your agent](your-first-agent#build)
-    - [Taking actions](your-first-agent#take-actions)
-    - [Receiving the environment](your-first-agent#perception)
+[Get started with Byte Arena.](getting-started)
 
 # Platform specification
 
@@ -59,15 +50,15 @@ While your agent can be coded in whatever programming language you like, this se
     - [Perception](clear_beta-spec/perception)
       - [Messages](clear_beta-spec/perception#messages)
 
-# Community materials
+# Community material
 
 - Articles
     - [Movement physics with vectors](https://www.xtuc.fr/notes/movement-physics-w-vectors.html)
 
 - SDKs
-    - [johnsudaar/go-bytearena](https://github.com/johnsudaar/go-bytearena)
+    - Go: [johnsudaar/go-bytearena](https://github.com/johnsudaar/go-bytearena)
 
-# Further reading
+# Further reading / watching
 
 - Videos
     - [Understanding vectors - The coding train](https://youtu.be/mWJkvxQXIa8)
@@ -82,3 +73,8 @@ Alternatively you can drop us a line at [hello@bytearena.com](mailto:hello@bytea
 We are [@byte_arena](https://twitter.com/byte_arena) on Twitter.
 
 We also have a Slack chat at https://bytearena.slack.com; ask us [on Twitter](https://twitter.com/byte_arena) for an invite.
+
+# Draft
+
+- [Create your container](agent-container)
+- [The Bytearena CLI](the-bytearena-cli)

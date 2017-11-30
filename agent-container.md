@@ -68,4 +68,4 @@ All Unix Capabilities are dropped and your container is not privileged.
 
 You are not allowed to change the Unix user or group which will execute your program.
 
-The user `nobody` must be present in the container in order to run your program. Note taht most Linux distribution have it.
+The user `nobody` must be present in the container in order to run your program. Note that most Linux distribution have it.

@@ -5,32 +5,33 @@
     * `ba generate`
     * `ba build`
 
-* agent specifications
-    * max steering force https://github.com/ByteArena/cli/issues/15
-    * gears and shooting specs
+* Physical world of the agents, and their constraints
+    * ticks per second (relative time)
+    * all perceptions relative
+    * holonomic drive
 
-* API and methods
-    * steer
-    * shoot
-    * messages
-    * handshake
+* Agent
+    * What is an agent
+    * Building an agent (link to getting started)
+    * Handshake
+    * Steering
+    * Shooting
+    * Messages
+    * Specifications
+        * max steering force https://github.com/ByteArena/cli/issues/15
+        * gears and shooting specs
+
+* Contributing
     * Existing SDKs
         * javascript
         * golang
         * reasonML
-    * implementing an SDK in any language
+    * Implementing an SDK in any language
 
 * The training
     * One or many agents
     * The viz
     * Ticks per second
-
-* Building an agent using docker
-
-* Physical world of the agents, and their constraints
-    * ticks pers second (relative time)
-    * all perceptions relative
-    * holonomic drive
 
 * Deathmatch
     * The goal
@@ -40,4 +41,3 @@
     * Shooting
     * Moving
     * Duration of a game
-
