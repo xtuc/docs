@@ -81,4 +81,4 @@ Alternatively you can drop us a line at [hello@bytearena.com](mailto:hello@bytea
 
 We are [@byte_arena](https://twitter.com/byte_arena) on Twitter.
 
-We also have a Slack chat at https://bytearena.slack.com; ask us [on Twitter](https://twitter.com/byte_arena) for an invite.
+We also have a Slack; ask us here [ByteArena/community#2](https://github.com/ByteArena/community/issues/2) for an invite.
