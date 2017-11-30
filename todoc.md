@@ -6,7 +6,11 @@
     * `ba build`
 
 * Physical world of the agents, and their constraints
-    * ticks per second (relative time)
+    * units
+        * time: tick (relative time)
+        * length: meter
+        * angle: radians
+
     * all perceptions relative
     * holonomic drive
 

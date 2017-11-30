@@ -12,7 +12,7 @@ While your agent can be coded in whatever programming language you like, this se
 
 * You have installed the [Byte Arena CLI](/doc/the-bytearena-cli) `ba`.
 * You have a running Docker daemon (please refer to [Docker's documentation](https://docs.docker.com/) to install it if not).
-* You know your way with JavaScript.
+* You know your way with JavaScript and NodeJS
 
 # Overview
 
@@ -79,6 +79,9 @@ $ ba train -agent powerful-jennet
 
 A browser should open at http://localhost:8080/arena/1, displaying the Byte Arena visualization, where you'll find your agent.
 
+As you can see, our agent is still pretty basic, moving randomly and not trying to avoid any obstacles.
+
+> TODO: change this video with the new one (ba-sample-agent.mp4)
 <video controls="controls" muted style="width: 100%; height: auto; margin: 1em 0;">
     <source type="video/mp4" src="https://s3.eu-central-1.amazonaws.com/bytearena-public/hexagon60.mp4"></source>
     <p>Your browser does not support the video element.</p>
@@ -88,7 +91,123 @@ Once the game is running, the game log displays a stream of messages informing a
 
 You can stop the game by pressing `Ctrl+c` on the command line.
 
-> TODO: Refac the doc here, yo make a smooth transition between the scaffolding and the code exploration / modification.
+> TODO: Refac the doc here, make a smooth transition between the scaffolding and the code exploration / modification.
+
+# Exploring the source code
+
+Here's a listing of the source files for our agent:
+
+```
+$ ~/agents/powerful-jennet> find . -type f
+./Dockerfile
+./README.md
+./package.json
+./src/index.js
+```
+
+The meat of our agent is found in the two files `src/index.js` and `Dockerfile`
+
+And here's the content of the `Dockerfile`:
+
+```
+FROM node:7
+
+ENV NPM_CONFIG_LOGLEVEL error
+
+WORKDIR /usr/app
+
+# Bundle the source code in the container
+COPY . /usr/app/
+
+# Install dependencies
+RUN npm install
+
+# Build source
+RUN npm run build
+
+# Command starting the agent
+CMD [ "npm", "start" ]
+```
+
+As you can see, it's a pretty basic Dockerfile, bundling and compiling the source inside the container.
+
+Here's now the content of `src/index.js` :
+
+```js
+import { vector, comm } from "bytearena-sdk";
+const Vector2 = vector.Vector2;
+
+// Connecting our agent to the game using the BA JS SDK
+const agent = comm.connect();
+
+// The JS SDK exposes an event-emitter API
+// We subscribe to the perception of the world
+agent.on("perception", perception => {
+  const actions = [];
+
+  // We can move by steering the agent.
+  // The steering is a force represented
+  // by a vector describing the desired
+  // movement on the x and y axes.
+
+  // In the following diagram,
+  // the agent is represented by ▲
+  // (nose pointing upwards)
+
+  /*
+                   +y
+         Forward    |     Forward
+            left    |     right
+                    |
+    -x ------------ ▲ ------------ +x
+                    |
+         Backward   |     Backward
+             left   |     right
+                   -y
+  */
+
+  // As you can see:
+  // To move forward, we have to give a y > 0.
+  // To turn right, an x > 0,
+  // To turn left, an x < 0> 
+
+  // In this scaffolding code we're moving
+  // randomly without avoiding obstacles.
+  // We received a data structure containing
+  // our current perception of the world.
+  // You probably want to handle this
+  // perception to react accordingly instead.
+
+  const direction = Math.random() < 0.5 ? -1 : 1; // -1: left, 1: right
+  const x = direction * Math.random()
+  const y = 3; // move forward 3 meters
+
+  // x, y coords mean "I want to move x meters lateraly and y meters forward"
+  const steering = new Vector2(x, y);
+  actions.push({ method: "steer", arguments: steering.toArray() });
+
+  // Submitting our actions for this turn
+  agent.takeActions(actions);
+});
+```
+
+Let's break down this code and explain what it does bit by bit :
+
+```js
+import { vector, comm } from "bytearena-sdk";
+const Vector2 = vector.Vector2;
+```
+
+The first line imports the vector and communication facilities of the Byte Arena JavaScript SDK.
+
+Other SDKs are available for other languages; check the index page of this documentation for more informations about these SDKs.
+
+```js
+// Connecting our agent to the game using the BA JS SDK
+const agent = comm.connect();
+```
+
+> TODO: continue here
 
 <a name="comm"></a>
 # Connection to the game server
