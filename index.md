@@ -57,7 +57,6 @@ While your agent can be coded in whatever programming language you like, this se
 - API (`clear_beta` version)
     - [Handshake protocol](clear_beta-spec/handshake)
     - [Perception](clear_beta-spec/perception)
-      - [Messages](clear_beta-spec/perception#messages)
 
 # Community materials
 
