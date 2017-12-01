@@ -81,17 +81,14 @@ A browser should open at http://localhost:8080/arena/1, displaying the Byte Aren
 
 As you can see, our agent is still pretty basic, moving randomly and not trying to avoid any obstacles.
 
-> TODO: change this video with the new one (ba-sample-agent.mp4)
 <video controls="controls" muted style="width: 100%; height: auto; margin: 1em 0;">
-    <source type="video/mp4" src="https://s3.eu-central-1.amazonaws.com/bytearena-public/hexagon60.mp4"></source>
+    <source type="video/mp4" src="https://s3.eu-central-1.amazonaws.com/bytearena-public/ba-sample-agent.mp4"></source>
     <p>Your browser does not support the video element.</p>
 </video>
 
 Once the game is running, the game log displays a stream of messages informing about the state of the game (lines prefixed by `[game]`), and showing the output of your agents on their stdout (lines prefixed by `[agent]`).
 
 You can stop the game by pressing `Ctrl+c` on the command line.
-
-> TODO: Refac the doc here, make a smooth transition between the scaffolding and the code exploration / modification.
 
 # Exploring the source code
 
@@ -107,29 +104,70 @@ $ ~/agents/powerful-jennet> find . -type f
 
 The meat of our agent is found in the two files `src/index.js` and `Dockerfile`
 
+## Dockerfile
+
 And here's the content of the `Dockerfile`:
 
 ```
 FROM node:7
-
 ENV NPM_CONFIG_LOGLEVEL error
 
+# /usr/app is the root of our code in the container
 WORKDIR /usr/app
 
-# Bundle the source code in the container
+# Bundle our source code in the container
 COPY . /usr/app/
 
 # Install dependencies
 RUN npm install
 
-# Build source
+# Build the source
 RUN npm run build
 
-# Command starting the agent
+# Tell Docker how to run our code
 CMD [ "npm", "start" ]
 ```
 
 As you can see, it's a pretty basic Dockerfile, bundling and compiling the source inside the container.
+
+* These lines tell Docker to run our code inside a container featuring NodeJS 7, and sets to `error` the verbosity level for `npm`, the Node package manager
+
+```
+FROM node:7
+ENV NPM_CONFIG_LOGLEVEL error
+```
+
+* We tell Docker that the commands of the Dockerfile will be executed in this folder.
+
+```
+WORKDIR /usr/app
+```
+
+* Our agent source code is copied inside the container, in `/usr/app`
+
+```
+COPY . /usr/app/
+```
+
+* We use `npm` to install the NPM dependencies of our agent inside the container
+
+```
+RUN npm install
+```
+
+* We then "build" the agent code, using Babel to transpile our ES6 code to ES5 code runnable by NodeJS.
+
+```
+RUN npm run build
+```
+
+* We finally tell Docker what command to issue to run our code when the container launches.
+
+```
+CMD [ "npm", "start" ]
+```
+
+## src/index.js
 
 Here's now the content of `src/index.js` :
 
@@ -193,58 +231,40 @@ agent.on("perception", perception => {
 
 Let's break down this code and explain what it does bit by bit :
 
+### Requiring dependencies
+
 ```js
 import { vector, comm } from "bytearena-sdk";
 const Vector2 = vector.Vector2;
 ```
 
-The first line imports the vector and communication facilities of the Byte Arena JavaScript SDK.
+The first line imports the vector math and communication facilities of the Byte Arena JavaScript SDK.
 
 Other SDKs are available for other languages; check the index page of this documentation for more informations about these SDKs.
 
+### Connecting to the Byte Arena Game server
+
 ```js
-// Connecting our agent to the game using the BA JS SDK
 const agent = comm.connect();
 ```
 
-> TODO: continue here
+This automatically connects our agent to the game server.
 
-<a name="comm"></a>
-# Connection to the game server
+Under the hood, it:
 
-Here is a boilerplate to etablish the connection to the game server:
+* connects to a TCP socket open on the server
+* does a handshake with the server
+* returns an object encapsulating the connected socket and implementing Node's `EventEmitter` interface
 
-```js
-import {comm} from 'bytearena-sdk';
+All the parameters the SDK requires to operate are provided by Byte Arena as environment variables. These variables are:
 
-const agent = comm.connect();
-```
+* `HOST`: the network host where the Byte Arena game server is running and reachable by the agent
+* `PORT`: the port number where our agent must connect on the game server
+* `AGENTID`: our random ID in use for the duration of this game
 
-At this point you can already launch the trainer with your agent.
+Note: You need not to use these variables yourself when using the SDK, it uses them for you.
 
-<a name="take-actions"></a>
-# Taking actions
-
-Your agent can take actions by calling the `takeActions` method:
-
-
-```js
-import {vector} from 'bytearena-sdk';
-
-const Vector2 = vector.Vector2;
-
-const force = new Vector2(0, 1);
-actions.push({ method: 'steer', arguments: force.toArray(5) });
-
-agent.takeActions(actions);
-```
-
-The supported methods are: `steer` and `shoot`.
-
-<a name="perception"></a>
-# Receiving the environment
-
-You can listen to the perception events sent by the game server every tick:
+### Subscribing to the perception stream
 
 ```js
 agent.on('perception', perception => {
@@ -252,37 +272,79 @@ agent.on('perception', perception => {
 });
 ```
 
-You can find the full documentation about the perception [here](/doc/understanding-the-perception).
+The game server will stream our agent its relative perception of the world it's in.
 
-# The complete example
+Every fraction of second (the default frequency is 20 ticks per second, or 20 tps), we're going to receive a datastructure containing this perception.
 
-```js
-import {vector, comm} from 'bytearena-sdk';
+For each tick, the game server expects us to answer with our moves (our actions) for the tick. We'll see how to do that below.
 
-const Vector2 = vector.Vector2;
-const agent = comm.connect();
+Note: In it's current state, our simplistic agent just moves randomly without avoiding obstacles, so it makes no use of this perception data yet.
+It's OK for now, but later on we'll have a look inside this datastructure to react to our environment instead.
 
-agent.on('perception', perception => {
-  const actions = [];
+### Taking actions
 
-  const force = new Vector2(0, 1);
-
-  actions.push({ method: 'steer', arguments: force.toArray(5) });
-
-  // Pushing batch of mutations
-  agent.takeActions(actions);
-});
+```
+const actions = [/*... our actions for the tick ...*/]
+agent.takeActions(actions);
 ```
 
+Your agent can take actions by calling `takeActions`.
 
-# Draft
+An action is the description of something that the agent wants to do in the game World during the current tick (move, shoot, ...).
 
-- [Create your container](agent-container)
-- [The Bytearena CLI](the-bytearena-cli)
+You can take any number of actions during the tick (0, 1 our several actions is OK). But you can take each kind of action (move, shoot) only once per tick.
+
+#### Steering
+
+The way we can move is by steering the agent in the World.
+
+The World is a 2D space for the agent, meaning that every World position or movement can be expressed using two coordinates `x` and `y`.
+
+The steering is a force represented by a vector describing the movement the agent desires to achieve on the `x` and `y` axes.
+
+All distances are expressed in meters, so 1 on `x` represents 1 meter in the World, and 1 on `y` also represents 1 meter in the World.
+
+<div style="background-color: cornflowerblue; color: white; padding: 2em 2em 1em 2em;">
+  <p style="font-size: 1.1em;"><strong>Side note about the agent's <a style="color: white;" href="https://en.wikipedia.org/wiki/Frame_of_reference">Frame of reference</a></strong></p>
+
+  <p>Just like in real life, an agent never knows its absolute position in the World.</p>
+
+  <p><strong>His frame of reference is relative to himself</strong>, which means that he's the origin of its own coordinate system, ie that he always sits on the point (0, 0) in its own coordinate system, nose pointing up on the y axis.</p>
+
+  <p>In turn, everything he perceives from the World and every action he takes in the World is expressed in coordinates relative to him.</p>
 
 
-- [Create your first agent](your-first-agent)
-    - [Connect to the game server](your-first-agent#comm)
-    - [Build your agent](your-first-agent#build)
-    - [Taking actions](your-first-agent#take-actions)
-    - [Receiving the environment](your-first-agent#perception)
+  <div style="background-color: white; padding: 2em; border-radius: 10px">
+    <img src="reference-frames.png" />
+  </div>
+
+</div>
+
+<p></p>
+
+To steer, we have to call `takeActions`, passing the vector of the movement we want to make in the world. The coordinates have to be expressed relatively to the agent.
+
+To move 1m straight forward, we'll move 0 on `x`, and 1 on `y`, like so:
+
+```js
+const steering = new Vector2(0, 1); // 1m straight forward
+
+const actions = [];
+actions.push({ method: "steer", arguments: steering.toArray() }); // steering.toArray() returns [0, 1]
+
+agent.takeActions(actions);
+```
+
+To move 0.5 meters left, we'll move -0.5 on `x`, and 0 on `y`.
+
+```js
+const steering = new Vector2(-0.5, 0);
+```
+
+**Note:** You can steer with any conceivable vector, but the agent is bound to some physical constraints that are enforced by the game server (maximum speed, maximum angular velocity, maximum steering force). If you ask for moves that overcomes these limitations, they'll simply be limited to the maximum applicable for the agent.
+
+# Going further
+
+This concludes the Byte Arena "Getting Started" guide.
+
+From there you can proceed to the "Basic obstacle avoidance" guide to learn how to make your way around obstacles in the world.
