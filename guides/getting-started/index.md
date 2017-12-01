@@ -10,8 +10,10 @@ While your agent can be coded in whatever programming language you like, this se
 
 # Prerequisites
 
-* You have installed the [Byte Arena CLI](/doc/the-bytearena-cli) `ba`.
-* You have a running Docker daemon (please refer to [Docker's documentation](https://docs.docker.com/) to install it if not).
+* You have installed the [Byte Arena CLI](/doc/the-bytearena-cli) `ba`. To check if you have already installed it, issue the command `ba --version` on the command line
+
+* You have a running Docker daemon (please refer to [Docker's documentation](https://docs.docker.com/) to install it if not). To check if it's running, issue the command `docker ps` on the command line
+
 * You know your way with JavaScript and NodeJS
 
 # Overview

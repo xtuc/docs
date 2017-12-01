@@ -1,5 +1,5 @@
 ---
-title:  The Bytearena CLI
+title: The Bytearena CLI
 ---
 
 # Installation
