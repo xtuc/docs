@@ -17,7 +17,6 @@
     * Existing SDKs
         * javascript
         * golang
-        * reasonML
     * implementing an SDK in any language
 
 * The training
