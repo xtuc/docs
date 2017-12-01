@@ -8,35 +8,36 @@ include_js:
 
 The root object is called `perception`, it's the object you receive in argument in the `onTick` function.
 
-<a name="agentPerception"></a>
-### `agentPerception`
+
+<a name="Perception"></a>
+### `Perception`
 
 | Property name | Type | Representation in the JSON |
 |---|---|
 | score | `int` | `Number` |
 | energy | `float64` | `Number` |
-| velocity | `vector.Vector2` | `Array of x, y` |
+| velocity | `Vector2` | `Array of float64 (x, y)` |
 | azimuth | `float64` | `Number` |
-| vision | `array agentPerceptionVisionItem` | `Array of Object` |
+| vision | `array of VisionItem` | `Array of Object` |
 | shootenergy | `float64` | `Number` |
 | shootcooldown | `int` | `Number` |
-| messages | `array mailboxMessagePerceptionWrapper` | `Array of Object` |
+| messages | `array of MessageWrapper` | `Array of Object` |
 
 
-<a name="agentPerceptionVisionItem"></a>
-### `agentPerceptionVisionItem`
+<a name="VisionItem"></a>
+### `VisionItem`
 
 | Property name | Type | Representation in the JSON |
 |---|---|
 | tag | `string` | `String` |
-| nearedge | `vector.Vector2` | `Array of x, y` |
-| center | `vector.Vector2` | `Array of x, y` |
-| faredge | `vector.Vector2` | `Array of x, y` |
-| velocity | `vector.Vector2` | `Array of x, y` |
+| nearedge | `Vector2` | `Array of float64 (x, y)` |
+| center | `Vector2` | `Array of float64 (x, y)` |
+| faredge | `Vector2` | `Array of float64 (x, y)` |
+| velocity | `Vector2` | `Array of float64 (x, y)` |
 
 
-<a name="mailboxMessagePerceptionWrapper"></a>
-### `mailboxMessagePerceptionWrapper`
+<a name="MessageWrapper"></a>
+### `MessageWrapper`
 
 | Property name | Type | Representation in the JSON |
 |---|---|
