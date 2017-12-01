@@ -8,38 +8,40 @@ include_js:
 
 After the handshake some data will be send back to the agent, with the following properties:
 
-```go
-/*
-    This object is the specifications of your agent.
-*/
-type specs struct {
+<a name="Specs"></a>
+### `Specs`
 
-    // max distance covered per turn
-    maxspeed           float64
+| Property name | Type | Representation in the JSON |
+|---|---|
+| maxspeed | `float64` | `Number` |
+| maxsteeringforce | `float64` | `Number` |
+| maxangularvelocity | `float64` | `Number` |
+| visionradius | `float64` | `Number` |
+| visionangle | `Angle` | `Number (radian)` |
+| bodyradius | `float64` | `Number` |
+| maxshootenergy | `float64` | `Number` |
+| shootrecoveryrate | `float64` | `Number` |
+| Gear | `GearSpecs` | `Object` |
 
-    // max force applied when steering (ie, max magnitude of steering vector)
-    maxsteeringforce   float64
 
-    // ^ same when chaning directions
-    maxangularvelocity float64
+<a name="GearSpecs"></a>
+### `GearSpecs`
 
-    // Distance of vision
-    visionradius       float64
+| Property name | Type | Representation in the JSON |
+|---|---|
+| Genre | `string` | `string` |
+| Kind | `string` | `string` |
+| Specs | `unknown` | `Object` |
 
-    // Angle of vision
-    visionangle        Angle
 
-    bodyradius         float64
+<a name="GunSpecs"></a>
+### `GunSpecs`
 
-    /*
-       Force against the agent.
-       It's used to represent all the physical constraints related to the environment.
+| Property name | Type | Representation in the JSON |
+|---|---|
+| shootcost | `float64` | `Number` |
+| shootcooldown | `int` | `Number` |
+| projectilespeed | `float64` | `Number` |
+| projectiledamage | `float64` | `Number` |
+| projectilerange | `float64` | `Number` |
 
-       You can calculate your position at the next tick using the following formula, given that `x` is the steering you want and `x` < `maxsteeringforce`:
-
-       x' = x - dragforce 
-    */
-    dragforce          float64
-
-}
-```
